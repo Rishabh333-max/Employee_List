@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>employee details</title>
+</head>
+<style>
+#header{
+    margin: 0px;
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#forms{
+    margin: 60px;
+    height: 60px;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#form{
+    margin: 60px;
+    height: 60px;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#result{
+    margin: 0px;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(158, 50, 50);
+    color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    
+}
+
+</style>
+<body>
+   <div id="header"><h3>Employee details system</h3></div><br/>
+   <br/>
+   <div id="forms">
+       <input type="box" id="name" placeholder="Name to be inserted" name="name"><br/>
+       <button id="insert">insert</button>
+   </div>
+   <div id="form">
+       <input type="box" id="name1" placeholder="Name to be removed" name="name"><br/>
+       <button id="remove">remove</button>
+   </div>
+   <table id="result"><tr><th>Employee List</th></tr></table>
+
+</body>
+<script>
+  var insert=document.getElementById("insert");
+  insert.addEventListener("onclick",insertion);
+  var row=1;
+  function insertion(){
+      var name=document.getElementById("name").value;
+      if(!name || typeof name!=="string"){
+           alert("Enter a valid name");
+           return;
+      }
+  }
+  var result=document.getElementById("result");
+  var newrow=result.insertRow(row);
+  var cell1=newrow.insertCell(0);
+  cell1.innerHTML=name;
+  row++;
+
+  var remove=document.getElementById("remove");
+  remove.addEventListener("onclick",deletion);
+
+function deletion(){
+    var name1=document.getElementById("name1").value;
+    if(!name1 || typeof name1!=="string"){
+        alert("Enter a valid name you want to remove")
+        return;
+    }
+}
+var col=document.getElementsByTagName("td");
+for(var i=1;i<col.length;i++){
+    if(col[i].innerText==name1){
+        document.getElementById("result").deleteRow(i)
+    }
+}
+
+   
+   
+</script>
+</html>
